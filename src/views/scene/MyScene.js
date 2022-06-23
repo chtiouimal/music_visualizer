@@ -12,7 +12,6 @@ export default function MyScene(props) {
   const [voted, setVoted] = useState(0);
   const [selected, setSelected] = useState(0);
   const texture = useLoader(THREE.TextureLoader, url);
-
   const data = musicCollection;
 
   useEffect(() => {
