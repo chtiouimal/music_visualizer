@@ -1,13 +1,11 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import "./App.css";
 import { MyControls } from "./components";
 import { MyScene } from "./views";
 
 function App() {
   const [playing, setPlaying] = useState(false);
-
-  // useEffect(() => {}, [playing]);
 
   return (
     <div id="canvas-container">
