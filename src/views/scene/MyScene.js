@@ -16,7 +16,7 @@ export default function MyScene({ setPlaying }) {
 
   useEffect(() => {
     ready ? setPlaying(true) : setPlaying(false);
-  }, [ready]);
+  }, [ready, setPlaying]);
 
   return (
     <mesh>
