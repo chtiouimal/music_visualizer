@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import "./App.css";
+import { MyControls } from "./components";
+import { MyScene } from "./views";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="canvas-container">
+      <Canvas camera={{ position: [0, 0, 0.1], rotation: [0, 0, 0] }}>
+        <MyControls
+          enableZoom={false}
+          enablePan={false}
+          enableDamping
+          dampingFactor={0.2}
+          autoRotate
+          rotateSpeed={-0.5}
+        />
+        <Suspense callback={null}>
+          <MyScene />
+        </Suspense>
+      </Canvas>
     </div>
   );
 }
