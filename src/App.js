@@ -1,10 +1,14 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import "./App.css";
 import { MyControls } from "./components";
 import { MyScene } from "./views";
 
 function App() {
+  const [playing, setPlaying] = useState(false);
+
+  // useEffect(() => {}, [playing]);
+
   return (
     <div id="canvas-container">
       <Canvas camera={{ position: [0, 0, 0.1], rotation: [0, 0, 0] }}>
@@ -13,11 +17,11 @@ function App() {
           enablePan={false}
           enableDamping
           dampingFactor={0.2}
-          autoRotate
+          autoRotate={!playing ? true : false}
           rotateSpeed={-0.5}
         />
         <Suspense callback={null}>
-          <MyScene />
+          <MyScene setPlaying={setPlaying} />
         </Suspense>
       </Canvas>
     </div>

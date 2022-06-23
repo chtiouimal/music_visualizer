@@ -1,5 +1,5 @@
 import { useLoader } from "@react-three/fiber";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as THREE from "three";
 import MyModel from "../../components/model/MyModel";
 import { musicCollection } from "../../utils/constants/MusicCollections";
@@ -14,6 +14,10 @@ export default function MyScene(props) {
   const texture = useLoader(THREE.TextureLoader, url);
 
   const data = musicCollection;
+
+  useEffect(() => {
+    ready ? props.setPlaying(true) : props.setPlaying(false);
+  }, [ready]);
 
   return (
     <mesh>
